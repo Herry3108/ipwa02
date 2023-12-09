@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+  <title>Seeretter</title>
+  <link type="text/css" rel="stylesheet" href="style.css" />
+</h:head>
+<h:body styleClass="no-margin">
+
+  <div class="card">
+    <h:form styleClass="menubar">
+    <p:menubar styleClass="menubar">
+      <p:menuitem
+        id="startseiteMenuItem"
+        label="Startseite"
+        value="Startseite"
+        icon="pi pi-home"
+        action="#{router.navigiereZuSeite('Startseite')}"
+        styleClass="menu-item"
+      />
+      <p:menuitem
+        id="verwaltungMenuItem"
+        label="Verwaltung"
+        value="Verwaltung"
+        icon="pi pi-users"
+        action="#{router.navigiereZuSeite('Verwaltung')}"
+        styleClass="menu-item"
+      />
+
+      <f:facet name="options">
+        <p:commandButton
+          id="logoutButton"
+          value="Logout"
+          icon="pi pi-fw pi-sign-out"
+          styleClass="ui-button-danger"
+          actionListener="#{logoutController.logout}"
+        />
+      </f:facet>
+    </p:menubar>
+  </h:form>
+
+    <img
+      src="boot_netz.jpg"
+      id="willkommen-banner"
+      width="100%"
+    />
+  </div>
+
+  <p:card>
+    <p:outputLabel>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque elementum urna at gravida.
+      Integer fermentum congue magna, a feugiat justo tristique sit amet. Sed laoreet neque vel nisi viverra feugiat.
+      Mauris ac libero felis.
+      Praesent vel nulla ligula. Etiam malesuada nulla a magna laoreet, vel molestie erat gravida.
+      Donec ultricies libero non orci ultrices pretium. Donec at enim imperdiet, consequat odio et, tincidunt tortor.
+
+      Quisque non neque id sapien egestas posuere. Curabitur nec suscipit justo, ac lobortis diam.
+      Cras consequat, velit non vehicula feugiat, velit tortor facilisis elit, ut fermentum enim elit vel lectus.
+      Aliquam vel gravida erat, bibendum egestas justo.
+
+      In metus neque, convallis eu aliquam ac, consectetur dapibus erat.
+      Fusce non convallis eros, in commodo turpis.
+      Sed ipsum massa, tincidunt eget vestibulum nec, consectetur sit amet augue.
+    </p:outputLabel>
+  </p:card>
+
+  <h:form>
+    <p:card id="bergungs-uebersicht" styleClass="custom-meldung-erstellen-card">
+      <f:facet name="title">
+        Letzte fünf Bergungen
+      </f:facet>
+      <h:panelGroup id="offeneGeisternetze">
+        <p:dataTable
+          value="#{startseite.getLetzteFuenfErledigteBergungen()}"
+          var="geborgenesGeisternetz"
+        >
+          <p:column
+            headerText="Erfassungsdatum"
+            sortBy="#{geborgenesGeisternetz.geisternetz.geisternetzEigenschaften.erfassungsDatum}"
+          >
+            <h:outputText value="#{geborgenesGeisternetz.geisternetz.geisternetzEigenschaften.erfassungsDatum}" />
+          </p:column>
+          <p:column
+            headerText="Latitude"
+            sortBy="#{geborgenesGeisternetz.geisternetz.gps.latitude}"
+          >
+            <h:outputText value="#{geborgenesGeisternetz.geisternetz.gps.latitude}" />
+          </p:column>
+          <p:column
+            headerText="Longitude"
+            sortBy="#{geborgenesGeisternetz.geisternetz.gps.longitude}"
+          >
+            <h:outputText value="#{geborgenesGeisternetz.geisternetz.gps.longitude}" />
+          </p:column>
+          <p:column
+            headerText="Land"
+            sortBy="#{geborgenesGeisternetz.geisternetz.gps.latitude}"
+          >
+            <h:outputText
+              value="#{geborgenesGeisternetz.geisternetz.gps.land}"
+            />
+          </p:column>
+          <p:column
+            headerText="Berger"
+            sortBy="#{geborgenesGeisternetz.geisternetz.gps.latitude}"
+          >
+            <h:outputText
+              value="#{personBergungGeisternetzController.getNamenBergendePerson(geborgenesGeisternetz.person)}"
+            />
+          </p:column>
+        </p:dataTable>
+      </h:panelGroup>
+    </p:card>
+  </h:form>
+
+  <h:form>
+    <p:card id="bergungs-uebersicht" styleClass="custom-meldung-erstellen-card">
+      <f:facet name="title">
+        Offene Meldungen
+      </f:facet>
+      <h:panelGroup id="offeneGeisternetze">
+        <p:dataTable
+          value="#{startseite.getLetzteFuenfOffeneMeldungen()}"
+          var="offeneMeldung"
+        >
+          <p:column
+            headerText="Erfassungsdatum"
+            sortBy="#{offeneMeldung.geisternetz.geisternetzEigenschaften.erfassungsDatum}"
+          >
+            <h:outputText value="#{offeneMeldung.geisternetz.geisternetzEigenschaften.erfassungsDatum}" />
+          </p:column>
+          <p:column
+            headerText="Latitude"
+            sortBy="#{offeneMeldung.geisternetz.gps.latitude}"
+          >
+            <h:outputText value="#{offeneMeldung.geisternetz.gps.latitude}" />
+          </p:column>
+          <p:column
+            headerText="Longitude"
+            sortBy="#{offeneMeldung.geisternetz.gps.longitude}"
+          >
+            <h:outputText value="#{offeneMeldung.geisternetz.gps.longitude}" />
+          </p:column>
+          <p:column
+            headerText="Land"
+            sortBy="#{offeneMeldung.geisternetz.gps.land}"
+          >
+            <h:outputText
+              value="#{offeneMeldung.geisternetz.gps.land}"
+            />
+          </p:column>
+          <p:column
+            headerText="Berger"
+            sortBy="#{offeneMeldung.person.personDaten.vorname}"
+          >
+            <h:outputText
+              value="#{personBergungGeisternetzController.getNamenBergendePerson(offeneMeldung.person)}"
+            />
+          </p:column>
+        </p:dataTable>
+      </h:panelGroup>
+    </p:card>
+  </h:form>
+
+  <div class="card-footer">
+    <h:form>
+      <p:menubar styleClass="custom-footer">
+        <p:menuitem
+          value="Impressum"
+        />
+        <p:menuitem
+          value="Datenschutz"
+        />
+      </p:menubar>
+    </h:form>
+  </div>
+
+</h:body>
+</html>
+

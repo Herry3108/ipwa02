@@ -1,0 +1,231 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global}
+    \entry{design_thinking}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3f07b83bde779e3d4f2c761174b1397d}{%
+           family={Diehl},
+           familyi={D\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{fullhash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{bibnamehash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{authorbibnamehash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{authornamehash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{authorfullhash}{3f07b83bde779e3d4f2c761174b1397d}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Design Thinking - Mit Methode komplexe Aufgaben lösen und neue Ideen entwickeln}
+      \field{urlday}{24}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://digitaleneuordnung.de/blog/design-thinking-methode
+      \endverb
+      \verb{url}
+      \verb https://digitaleneuordnung.de/blog/design-thinking-methode
+      \endverb
+    \endentry
+    \entry{jakarta_ee}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=cd0e4b805466f6beb36a85da7ab88e6c}{%
+           family={Vaughan-Nichols},
+           familyi={V\bibinithyphendelim N\bibinitperiod},
+           given={Steven\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{fullhash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{bibnamehash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{authorbibnamehash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{authornamehash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{authorfullhash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Good-bye JEE, hello Jakarta EE}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.zdnet.com/article/good-bye-jee-hello-jakarta-ee/
+      \endverb
+      \verb{url}
+      \verb https://www.zdnet.com/article/good-bye-jee-hello-jakarta-ee/
+      \endverb
+    \endentry
+    \entry{wwf_geisternetz}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=27f173147f22c55a86474fee83431e91}{%
+           family={WWF},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{27f173147f22c55a86474fee83431e91}
+      \strng{fullhash}{27f173147f22c55a86474fee83431e91}
+      \strng{bibnamehash}{27f173147f22c55a86474fee83431e91}
+      \strng{authorbibnamehash}{27f173147f22c55a86474fee83431e91}
+      \strng{authornamehash}{27f173147f22c55a86474fee83431e91}
+      \strng{authorfullhash}{27f173147f22c55a86474fee83431e91}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Geisternetze - tödliche Gefahr}
+      \field{urlday}{30}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.wwf.de/themen-projekte/plastik/geisternetze
+      \endverb
+      \verb{url}
+      \verb https://www.wwf.de/themen-projekte/plastik/geisternetze
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global}
+    \entry{design_thinking}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3f07b83bde779e3d4f2c761174b1397d}{%
+           family={Diehl},
+           familyi={D\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{fullhash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{bibnamehash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{authorbibnamehash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{authornamehash}{3f07b83bde779e3d4f2c761174b1397d}
+      \strng{authorfullhash}{3f07b83bde779e3d4f2c761174b1397d}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Design Thinking - Mit Methode komplexe Aufgaben lösen und neue Ideen entwickeln}
+      \field{urlday}{24}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://digitaleneuordnung.de/blog/design-thinking-methode
+      \endverb
+      \verb{url}
+      \verb https://digitaleneuordnung.de/blog/design-thinking-methode
+      \endverb
+    \endentry
+    \entry{jakarta_ee}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=cd0e4b805466f6beb36a85da7ab88e6c}{%
+           family={Vaughan-Nichols},
+           familyi={V\bibinithyphendelim N\bibinitperiod},
+           given={Steven\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{fullhash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{bibnamehash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{authorbibnamehash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{authornamehash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \strng{authorfullhash}{cd0e4b805466f6beb36a85da7ab88e6c}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Good-bye JEE, hello Jakarta EE}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.zdnet.com/article/good-bye-jee-hello-jakarta-ee/
+      \endverb
+      \verb{url}
+      \verb https://www.zdnet.com/article/good-bye-jee-hello-jakarta-ee/
+      \endverb
+    \endentry
+    \entry{wwf_geisternetz}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=27f173147f22c55a86474fee83431e91}{%
+           family={WWF},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{27f173147f22c55a86474fee83431e91}
+      \strng{fullhash}{27f173147f22c55a86474fee83431e91}
+      \strng{bibnamehash}{27f173147f22c55a86474fee83431e91}
+      \strng{authorbibnamehash}{27f173147f22c55a86474fee83431e91}
+      \strng{authornamehash}{27f173147f22c55a86474fee83431e91}
+      \strng{authorfullhash}{27f173147f22c55a86474fee83431e91}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Geisternetze - tödliche Gefahr}
+      \field{urlday}{30}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.wwf.de/themen-projekte/plastik/geisternetze
+      \endverb
+      \verb{url}
+      \verb https://www.wwf.de/themen-projekte/plastik/geisternetze
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

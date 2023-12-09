@@ -1,0 +1,8 @@
+<navigation-rule>
+  <from-view-id>/index.xhtml</from-view-id>
+  <navigation-case>
+    <from-outcome>verwaltung</from-outcome>
+    <to-view-id>/verwaltung.xhtml</to-view-id>
+    <redirect />
+  </navigation-case>
+</navigation-rule>

@@ -1,0 +1,479 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+  <title>Seeretter</title>
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="style.css"
+  />
+</h:head>
+<h:body styleClass="no-margin">
+
+  <div id="header">
+    <h:form styleClass="menubar">
+      <p:menubar styleClass="menubar">
+        <p:menuitem
+          id="startseiteMenuItem"
+          label="Startseite"
+          value="Startseite"
+          icon="pi pi-home"
+          action="#{router.navigiereZuSeite('Startseite')}"
+          styleClass="menu-item"
+        />
+        <p:menuitem
+          id="verwaltungMenuItem"
+          label="Verwaltung"
+          value="Verwaltung"
+          icon="pi pi-users"
+          action="#{router.navigiereZuSeite('Verwaltung')}"
+          styleClass="menu-item custom-lighter-menuitem"
+        />
+
+        <f:facet name="options">
+          <p:commandButton
+            id="logoutButton"
+            value="Logout"
+            icon="pi pi-fw pi-sign-out"
+            styleClass="ui-button-danger"
+            actionListener="#{logoutController.logout}"
+          />
+        </f:facet>
+      </p:menubar>
+    </h:form>
+
+    <img
+      src="fische_netz.jpg"
+      id="willkommen-banner"
+      width="100%"
+    />
+  </div>
+
+  <h:form id="formId">
+    <p:card styleClass="custom-meldung-erstellen-card">
+      <f:facet name="title">
+        Neue Meldung
+      </f:facet>
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-1 ui-md-offset-11" style="text-align: right;">
+          <p:selectBooleanButton
+            value="#{personBergungGeisternetzController.istNeueMeldungPersoenlich}"
+            onLabel="Persönlich"
+            offLabel="Anonym"
+          >
+            <p:ajax update="formId" />
+          </p:selectBooleanButton>
+        </div>
+      </div>
+
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-12">
+          <div class="ui-inputgroup">
+            <p:messages id="messages" />
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon custom-label">
+              Anrede  *
+            </span>
+            <p:selectOneMenu
+              id="anrede"
+              placeholder="#{userSession.anrede}"
+              value="#{personBergungGeisternetzController.anrede}"
+              disabled="#{!personBergungGeisternetzController.istNeueMeldungPersoenlich}"
+            >
+              <f:selectItem itemLabel="Herr" itemValue="1" />
+              <f:selectItem itemLabel="Frau" itemValue="2" />
+              <f:selectItem itemLabel="Divers" itemValue="3" />
+            </p:selectOneMenu>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon custom-label">
+                <p:outputLabel for="vorname" value="Vorname"/>
+            </span>
+            <p:inputText
+              id="vorname"
+              placeholder="#{userSession.vorname}"
+              value="#{personBergungGeisternetzController.vorname}"
+              required="true"
+              disabled="#{!personBergungGeisternetzController.istNeueMeldungPersoenlich}">
+              <f:validateRegex
+                pattern="^[A-Za-züÜäÄöÖß\s]+$"
+                message="Es sind Buchstaben und Leerzeichen erlaubt" />
+            </p:inputText>
+          </div>
+          <p:message id="vornameMessage" for="vorname" >
+            <p:autoUpdate/>
+          </p:message>
+        </div>
+
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon custom-label">
+              <p:outputLabel for="nachname" value="Nachname"/>
+            </span>
+            <p:inputText
+              id = "nachname"
+              placeholder="#{userSession.name}"
+              value="#{personBergungGeisternetzController.nachname}"
+              required="true"
+              disabled="#{!personBergungGeisternetzController.istNeueMeldungPersoenlich}"
+            >
+              <f:validateRegex
+                pattern="^[A-Za-züÜäÄöÖß\s]+$"
+                message="Es sind Buchstaben und Leerzeichen erlaubt"
+              />
+            </p:inputText>
+          </div>
+          <p:message id="nachnameMessage" for="nachname" >
+            <p:autoUpdate/>
+          </p:message>
+        </div>
+
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon custom-label">
+            <p:outputLabel for="telefonnummer" value="Telefonnummer"/>
+          </span>
+            <p:inputText
+              id="telefonnummer"
+              value="#{personBergungGeisternetzController.telefonnummer}"
+              required="true"
+              disabled="#{!personBergungGeisternetzController.istNeueMeldungPersoenlich}"
+            >
+              <f:validateRegex
+                pattern="^\d+(,\d+)?$"
+                message="Es sind nur Zahlen erlaubt"
+              />
+            </p:inputText>
+          </div>
+          <p:message id="telefonnummerMessage" for="telefonnummer" >
+            <p:autoUpdate/>
+          </p:message>
+        </div>
+      </div>
+
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon custom-label">
+              <p:outputLabel for="latitude" value="Latitude"/>
+            </span>
+            <p:inputText
+              id="latitude"
+              value="#{personBergungGeisternetzController.latitude}"
+              required="true"
+            >
+              <f:validateRegex
+                pattern="^\d+(,\d+)?$"
+                message="Es sind nur Zahlen erlaubt"
+              />
+            </p:inputText>
+          </div>
+          <p:message id="latitudeMessage" for="latitude" >
+            <p:autoUpdate/>
+          </p:message>
+        </div>
+
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon custom-label">
+              <p:outputLabel for="longitude" value="Longitude"/>
+            </span>
+            <p:inputText
+              id="longitude"
+              value="#{personBergungGeisternetzController.longitude}"
+              required="true"
+              placeholder=" "
+            >
+              <f:validateRegex
+                pattern="^\d+(,\d+)?$"
+                message="Es sind nur Zahlen erlaubt"
+              />
+            </p:inputText>
+          </div>
+
+          <p:message id="longitudeMessage" for="longitude" >
+            <p:autoUpdate/>
+          </p:message>
+        </div>
+
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon custom-label">
+              <p:outputLabel for="erfassungsdatum" value="Erfassungsdatum *"/>
+            </span>
+            <p:datePicker
+              id="erfassungsdatum"
+              value="#{personBergungGeisternetzController.erfassungsDatum}"
+              pattern="dd.MM.yyyy"
+              showIcon="true"
+            >
+              <p:ajax event="dateSelect" update="erfassungsdatumMessage" />
+            </p:datePicker>
+          </div>
+          <p:message id="erfassungsdatumMessage" for="erfassungsdatum">
+            <p:autoUpdate/>
+          </p:message>
+        </div>
+
+        <div class="ui-g-12 ui-md-3">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon custom-label">
+              <p:outputLabel for="groesse" value="Größe"/>
+            </span>
+            <p:inputText id="groesse" value="#{personBergungGeisternetzController.groesse}" required="true">
+              <f:validateRegex
+                pattern="^\d+([,.]\d+)?$"
+                message="Es sind nur Zahlen erlaubt"
+              />
+            </p:inputText>
+          </div>
+
+          <p:message id="groesseMessage" for="groesse">
+            <p:autoUpdate/>
+          </p:message>
+        </div>
+      </div>
+
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-12  ui-md-offset-11 ui-md-1" >
+          <p:commandButton
+            value="Speichern"
+            id="neue-meldung-speichern"
+            actionListener="#{personBergungGeisternetzController.saveNeueMeldung}"
+            styleClass="ui-priority-primary"
+          />
+        </div>
+      </div>
+    </p:card>
+  </h:form>
+
+  <h:form>
+    <p:card styleClass="custom-meldung-erstellen-card">
+      <f:facet name="title">
+        Offene Bergungen
+      </f:facet>
+      <h:panelGroup id="offeneGeisternetze">
+        <p:dataTable
+          value="#{personBergungGeisternetzController.allOffeneGeisternetze}"
+          var="offenesGeisternetz"
+        >
+          <p:column
+            headerText="Latitude"
+            sortBy="#{offenesGeisternetz.gps.latitude}"
+            rendered="#{!offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+          >
+            <h:outputText value="#{offenesGeisternetz.gps.latitude}" />
+          </p:column>
+          <p:column
+            headerText="Longitude"
+            rendered="#{!offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+            sortBy="#{offenesGeisternetz.gps.longitude}"
+          >
+            <h:outputText value="#{offenesGeisternetz.gps.longitude}" />
+          </p:column>
+          <p:column
+            headerText="Land"
+            rendered="#{!offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+          >
+            <h:outputText
+              value="#{offenesGeisternetz.gps.land}"
+            />
+          </p:column>
+          <p:column
+            headerText="Status"
+            rendered="#{!offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+          >
+            <h:outputText
+              value="#{personBergungGeisternetzController.getStatusMappingForTable(offenesGeisternetz.geisternetzEigenschaften)}"
+            />
+          </p:column>
+          <p:column
+            headerText="Erfassungsdatum"
+            sortBy="#{offenesGeisternetz.geisternetzEigenschaften.erfassungsDatum}"
+            rendered="#{!offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+          >
+            <h:outputText value="#{offenesGeisternetz.geisternetzEigenschaften.erfassungsDatum}" />
+          </p:column>
+          <p:column
+            headerText="Beanspruchen" rendered="#{userSession.istBergend and !offenesGeisternetz.geisternetzEigenschaften.istVerschollen}">
+            <p:selectBooleanCheckbox value="#{personBergungGeisternetzController.selectedGeisternetze[offenesGeisternetz.id].istZugewiesen}">
+              <p:ajax
+                event="change"
+                listener="#{personBergungGeisternetzController.updateOffeneMeldungStatus(offenesGeisternetz.id, 'istZugewiesen', offenesGeisternetz.geisternetzEigenschaften.istZugewiesen)}"
+              />
+            </p:selectBooleanCheckbox>
+          </p:column>
+          <p:column
+            headerText="Verschollen"
+            rendered="#{!offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+          >
+            <p:selectBooleanCheckbox value="#{personBergungGeisternetzController.selectedGeisternetze[offenesGeisternetz.id].istVerschollen}">
+              <p:ajax
+                event="change"
+                listener="#{personBergungGeisternetzController.updateOffeneMeldungStatus(offenesGeisternetz.id, 'istVerschollen', offenesGeisternetz.geisternetzEigenschaften.istVerschollen)}"
+              />
+            </p:selectBooleanCheckbox>
+          </p:column>
+        </p:dataTable>
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12  ui-md-offset-11 ui-md-1" >
+            <p:commandButton
+              value="Speichern"
+              action="#{personBergungGeisternetzController.saveZuweisungPersonBergungGeisternetz}"
+            />
+          </div>
+        </div>
+      </h:panelGroup>
+    </p:card>
+  </h:form>
+
+  <h:form>
+    <p:card styleClass="custom-meldung-erstellen-card">
+      <f:facet name="title">
+        Verschollene Geisternetze
+      </f:facet>
+      <h:panelGroup id="verscholleneGeisternetze">
+        <p:dataTable
+          value="#{personBergungGeisternetzController.allOffeneGeisternetze}"
+          var="offenesGeisternetz"
+        >
+          <p:column
+            headerText="Latitude"
+            sortBy="#{offenesGeisternetz.gps.latitude}"
+            rendered="#{offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+          >
+            <h:outputText value="#{offenesGeisternetz.gps.latitude}" />
+          </p:column>
+          <p:column
+            headerText="Longitude"
+            rendered="#{offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+            sortBy="#{offenesGeisternetz.gps.longitude}"
+          >
+            <h:outputText value="#{offenesGeisternetz.gps.longitude}" />
+          </p:column>
+          <p:column
+            headerText="Land"
+            rendered="#{offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+          >
+            <h:outputText
+              value="#{offenesGeisternetz.gps.land}"
+            />
+          </p:column>
+          <p:column
+            headerText="Status"
+            rendered="#{offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+          >
+            <h:outputText
+              value="#{personBergungGeisternetzController.getStatusMappingForTable(offenesGeisternetz.geisternetzEigenschaften)}"
+            />
+          </p:column>
+          <p:column
+            headerText="Erfassungsdatum"
+            sortBy="#{offenesGeisternetz.geisternetzEigenschaften.erfassungsDatum}"
+            rendered="#{offenesGeisternetz.geisternetzEigenschaften.istVerschollen}"
+          >
+            <h:outputText value="#{offenesGeisternetz.geisternetzEigenschaften.erfassungsDatum}" />
+          </p:column>
+        </p:dataTable>
+      </h:panelGroup>
+    </p:card>
+  </h:form>
+
+  <h:form rendered="#{userSession.istBergend}">
+    <p:card styleClass="custom-meldung-erstellen-card">
+      <f:facet name="title">
+        Meine Zuweisungen
+      </f:facet>
+      <h:panelGroup id="geisternetzeEinzelPerson">
+        <p:dataTable
+          value="#{personBergungGeisternetzController.eingeloggtePersonZuweisungen}"
+          var="zugewiesenesGeisternetz"
+        >
+          <p:column headerText="Latitude">
+            <h:outputText value="#{zugewiesenesGeisternetz.gps.latitude}" />
+          </p:column>
+          <p:column headerText="Longitude">
+            <h:outputText value="#{zugewiesenesGeisternetz.gps.longitude}" />
+          </p:column>
+          <p:column headerText="Land">
+            <h:outputText
+              value="#{zugewiesenesGeisternetz.gps.land}"
+            />
+          </p:column>
+          <p:column headerText="Erfassungsdatum">
+            <h:outputText value="#{zugewiesenesGeisternetz.geisternetzEigenschaften.erfassungsDatum}" />
+          </p:column>
+          <p:column headerText="Beanspruchen">
+              <p:selectBooleanCheckbox value="#{personBergungGeisternetzController.meineZuweisungenStatus[zugewiesenesGeisternetz.id].istZugewiesen}">
+                <p:ajax
+                  event="change"
+                  listener="#{personBergungGeisternetzController.updateZuweisungStatus(zugewiesenesGeisternetz.id, 'istZugewiesen', zugewiesenesGeisternetz.geisternetzEigenschaften.istZugewiesen)}"
+                />
+              </p:selectBooleanCheckbox>
+          </p:column>
+          <p:column headerText="Bergung bevorstehend">
+            <p:selectBooleanCheckbox value="#{personBergungGeisternetzController.meineZuweisungenStatus[zugewiesenesGeisternetz.id].istBergungBevorstehend}">
+              <p:ajax
+                event="change"
+                listener="#{personBergungGeisternetzController.updateZuweisungStatus(zugewiesenesGeisternetz.id, 'istBergungBevorstehend', zugewiesenesGeisternetz.geisternetzEigenschaften.istBergungBevorstehend)}"
+              />
+            </p:selectBooleanCheckbox>
+          </p:column>
+          <p:column headerText="Bergung abgeschlossen">
+            <p:selectBooleanCheckbox value="#{personBergungGeisternetzController.meineZuweisungenStatus[zugewiesenesGeisternetz.id].istBergungAbgeschlossen}">
+              <p:ajax
+                event="change"
+                listener="#{personBergungGeisternetzController.updateZuweisungStatus(zugewiesenesGeisternetz.id, 'istBergungAbgeschlossen', zugewiesenesGeisternetz.geisternetzEigenschaften.istBergungAbgeschlossen)}"
+              />
+            </p:selectBooleanCheckbox>
+          </p:column>
+          <p:column headerText="Verschollen">
+            <p:selectBooleanCheckbox value="#{personBergungGeisternetzController.meineZuweisungenStatus[zugewiesenesGeisternetz.id].istVerschollen}">
+              <p:ajax
+                event="change"
+                listener="#{personBergungGeisternetzController.updateZuweisungStatus(zugewiesenesGeisternetz.id, 'istVerschollen', zugewiesenesGeisternetz.geisternetzEigenschaften.istVerschollen)}"
+              />
+            </p:selectBooleanCheckbox>
+          </p:column>
+        </p:dataTable>
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12  ui-md-offset-11 ui-md-1" >
+            <p:commandButton
+              value="Speichern"
+              action="#{personBergungGeisternetzController.saveEingeloggtePersonZuweisungen}"
+            />
+          </div>
+        </div>
+      </h:panelGroup>
+    </p:card>
+  </h:form>
+
+  <div id="footer">
+    <h:form styleClass="menubar">
+      <div class="card-footer menubar">
+        <p:menubar styleClass="custom-footer">
+          <p:menuitem
+            value="Impressum"
+          />
+          <p:menuitem
+            value="Datenschutz"
+          />
+        </p:menubar>
+      </div>
+    </h:form>
+  </div>
+</h:body>
+</html>
+

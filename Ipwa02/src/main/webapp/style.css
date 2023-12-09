@@ -1,0 +1,75 @@
+.ui-menubar,.ui-menu-child,.ui-menu {
+    background: #1F3747 !important;
+}
+
+body,
+form {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    color: whitesmoke !important;
+}
+
+.menubar {
+    border: none !important;
+    border-radius: 0 0 0 !important;
+}
+
+#bergungs-uebersicht{
+    padding: 1rem !important;
+    background-image: url("strand_muell.jpg");
+    width: 100%;
+    height: 100%;
+}
+
+.ui-card-body
+{
+    padding: 1rem !important;
+}
+.ui-card-title
+{
+    padding-left: 8px !important;
+}
+
+.ui-card-content {
+    padding-top: 0px !important;
+}
+.custom-meldung-erstellen-card{
+    margin: 2rem 1rem 2rem 1rem !important;
+    border: solid 1px lightgrey;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group .ui-inputtext {
+    margin-bottom: 5px;
+}
+
+.card-footer {
+    text-align: center !important;
+}
+
+.custom-footer {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.custom-button {
+    float: right;
+    margin-top: 20px;
+}
+
+.custom-label {
+    width: 45% !important;
+    text-align: left !important;
+}
+
+
+
+
